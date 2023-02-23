@@ -1,14 +1,13 @@
-import { withIronSessionApiRoute } from "iron-session/next";
-import { ironOptions } from "@/config/iron-session";
+import { withSessionRoute } from "@/lib/withSession";
 
 async function loginRoute(req, res) {
   // get user from database then
   req.session.user = {
     id: 230,
-    admin: false,
+    admin: true,
   };
   await req.session.save();
   res.send({ ok: true });
 }
 
-export default withIronSessionApiRoute(loginRoute, ironOptions);
+export default withSessionRoute(loginRoute);

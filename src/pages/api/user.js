@@ -1,8 +1,7 @@
-import { withIronSessionApiRoute } from "iron-session/next";
-import { ironOptions } from "@/config/iron-session";
+import { withSessionRoute } from "@/lib/withSession";
 
 function userRoute(req, res) {
   res.send({ user: req.session.user });
 }
 
-export default withIronSessionApiRoute(userRoute, ironOptions);
+export default withSessionRoute(userRoute);

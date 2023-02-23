@@ -1,12 +1,11 @@
-import { withIronSessionSsr } from "iron-session/next";
-import { ironOptions } from "@/config/iron-session";
+import { withSessionSsr } from "@/lib/withSession";
 
 export default function Admin({ user }) {
   console.log(user);
   return <h1>Welcome !</h1>;
 }
 
-export const getServerSideProps = withIronSessionSsr(
+export const getServerSideProps = withSessionSsr(
   async function getServerSideProps({ req, res }) {
     const user = req.session.user;
 
@@ -25,6 +24,5 @@ export const getServerSideProps = withIronSessionSsr(
         user: req.session.user,
       },
     };
-  },
-  ironOptions
+  }
 );
